@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="My personal dashboard for bookmarks, home services, monitoring, and media.">
+  <meta name="theme-color" content="#1e1e2f">
+  <title>My Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="site-header">
+      <div>
+        <h1>My Dashboard</h1>
+        <p class="muted intro">Bookmarks · Home services · Media · Sports</p>
+      </div>
+      <div class="header-actions">
+        <span class="demo-label" title="This public copy uses local sample data instead of private service connections">Offline preview</span>
+        <button class="secondary-button" id="reset-demo" type="button" title="Reset preview controls">Reset</button>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <section class="section search-section" aria-label="Quick search">
+        <div class="search-wrap">
+          <span aria-hidden="true" class="search-icon">⌕</span>
+          <input id="bookmarkSearch" class="search-input" type="search" autocomplete="off" placeholder="Search bookmarks or the web…" aria-label="Search bookmarks or the web" aria-controls="suggestions" aria-expanded="false">
+          <kbd>/</kbd>
+        </div>
+        <ul id="suggestions" class="suggestions" role="listbox"></ul>
+      </section>
+
+      <div class="overview-grid">
+        <section class="section overview-card" aria-labelledby="clock-label">
+          <div class="section-heading"><h2 id="clock-label">Local time</h2></div>
+          <div id="clock" class="clock-text" aria-live="off"></div>
+        </section>
+        <section class="section overview-card" aria-labelledby="weather-label">
+          <div class="section-heading"><h2 id="weather-label">Weather</h2></div>
+          <div class="weather-preview"><span class="weather-symbol" aria-hidden="true">☁</span><div><strong>21°</strong><span>Athens · Partly cloudy</span></div></div>
+          
+        </section>
+      </div>
+
+      <section class="section" aria-labelledby="shortcuts-label">
+        <div class="section-heading"><h2 id="shortcuts-label">Quick bookmarks</h2></div>
+        <div class="bookmarks-grid">
+          <a class="bookmark" href="https://mail.google.com/" target="_blank" rel="noopener noreferrer"><img src="images/bookmarks/gmail.svg" alt=""><span>Gmail</span></a>
+          <a class="bookmark" href="https://www.w3schools.com/" target="_blank" rel="noopener noreferrer"><img src="images/bookmarks/w3schools.svg" alt=""><span>W3Schools</span></a>
+          <a class="bookmark" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer"><img src="images/bookmarks/youtube.svg" alt=""><span>YouTube</span></a>
+          <a class="bookmark" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer"><img src="images/bookmarks/chatgpt.svg" alt=""><span>ChatGPT</span></a>
+          <a class="bookmark" href="https://mail.proton.me/" target="_blank" rel="noopener noreferrer"><img src="images/bookmarks/proton-mail.svg" alt=""><span>Proton Mail</span></a>
+          <a class="bookmark" href="https://messages.google.com/" target="_blank" rel="noopener noreferrer"><img src="images/bookmarks/google-messages.svg" alt=""><span>Messages</span></a>
+        </div>
+      </section>
+
+      <section aria-label="Services and infrastructure" class="services-block">
+        <div class="group-heading"><h2>Home services</h2></div>
+        <div class="collapsible-container">
+          <button class="collapsible-button" type="button" data-collapsible-target="glancesContent" aria-expanded="false" aria-controls="glancesContent"><span><span aria-hidden="true">▥</span> Server Stats (Glances)</span><span class="chevron" aria-hidden="true">⌄</span></button>
+          <div class="collapsible-content" id="glancesContent">
+
+            <div class="metric-grid">
+              <div class="metric"><span>CPU usage</span><strong>24%</strong><div class="meter"><i style="width:24%"></i></div></div>
+              <div class="metric"><span>Memory</span><strong>12.4 / 32 GB</strong><div class="meter"><i style="width:39%"></i></div></div>
+              <div class="metric"><span>Storage</span><strong>4.2 / 8 TB</strong><div class="meter"><i style="width:53%"></i></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="collapsible-container">
+          <button class="collapsible-button" type="button" data-collapsible-target="HAContent" aria-expanded="false" aria-controls="HAContent"><span><span aria-hidden="true">⌂</span> Home Assistant</span><span class="chevron" aria-hidden="true">⌄</span></button>
+          <div class="collapsible-content" id="HAContent"><div class="sample-entities"><div><span>💡 Bedroom light</span><strong id="entity-light">On · 50%</strong></div><div><span>🌡 Living room climate</span><strong>23°C · Auto</strong></div><div><span>🔌 Smart plug</span><strong>Online · 18 W</strong></div></div></div>
+        </div>
+        <div class="collapsible-container">
+          <button class="collapsible-button" type="button" data-collapsible-target="containersSection" aria-expanded="false" aria-controls="containersSection"><span><span aria-hidden="true">▦</span> Local Containers</span><span class="chevron" aria-hidden="true">⌄</span></button>
+          <div class="collapsible-content" id="containersSection">
+
+            <h3 class="catalogue-heading">Main</h3>
+            <div class="service-grid">
+              <div class="service-tile"><img src="images/dockers/main/unraid.svg" alt=""><span>Unraid</span></div>
+              <div class="service-tile"><img src="images/dockers/main/router.svg" alt=""><span>Router</span></div>
+              <div class="service-tile"><img src="images/dockers/main/home-assistant.svg" alt=""><span>Home Assistant</span></div>
+            </div>
+            <h3 class="catalogue-heading">Torrenting</h3>
+            <div class="service-grid">
+              <div class="service-tile"><img src="images/dockers/torrenting/overseerr.svg" alt=""><span>Overseerr</span></div>
+              <div class="service-tile"><img src="images/dockers/torrenting/qbittorrent.svg" alt=""><span>qBittorrent</span></div>
+              <div class="service-tile"><img src="images/dockers/torrenting/firefox.svg" alt=""><span>Firefox</span></div>
+              <div class="service-tile"><img src="images/dockers/torrenting/sonarr.svg" alt=""><span>Sonarr</span></div>
+              <div class="service-tile"><img src="images/dockers/torrenting/radarr.svg" alt=""><span>Radarr</span></div>
+              <div class="service-tile"><img src="images/dockers/torrenting/prowlarr.svg" alt=""><span>Prowlarr</span></div>
+              <div class="service-tile"><img src="images/dockers/torrenting/bazarr.svg" alt=""><span>Bazarr</span></div>
+            </div>
+            <h3 class="catalogue-heading">Media</h3>
+            <div class="service-grid">
+              <div class="service-tile"><img src="images/dockers/media/plex.svg" alt=""><span>Plex</span></div>
+              <div class="service-tile"><img src="images/dockers/media/jellyfin.svg" alt=""><span>Jellyfin</span></div>
+              <div class="service-tile"><img src="images/dockers/media/jellify.svg" alt=""><span>Jelly</span></div>
+              <div class="service-tile"><img src="images/dockers/media/tautulli.svg" alt=""><span>Tautulli</span></div>
+            </div>
+            <h3 class="catalogue-heading">Books & Notes</h3>
+            <div class="service-grid">
+              <div class="service-tile"><img src="images/dockers/books/audiobookshelf.svg" alt=""><span>Audiobookshelf</span></div>
+              <div class="service-tile"><img src="images/dockers/books/calibre-web.svg" alt=""><span>Calibre Web</span></div>
+              <div class="service-tile"><img src="images/dockers/books/calibre.svg" alt=""><span>Calibre</span></div>
+              <div class="service-tile"><img src="images/dockers/books/mealie.svg" alt=""><span>Mealie</span></div>
+              <div class="service-tile"><img src="images/dockers/books/joplin.svg" alt=""><span>Joplin</span></div>
+            </div>
+            <h3 class="catalogue-heading">Tools</h3>
+            <div class="service-grid">
+              <div class="service-tile"><img src="images/dockers/tools/code-server.png" alt=""><span>Code Server</span></div>
+              <div class="service-tile"><img src="images/dockers/tools/glances.svg" alt=""><span>Glances</span></div>
+              <div class="service-tile"><img src="images/dockers/tools/duplicati.svg" alt=""><span>Duplicati</span></div>
+              <div class="service-tile"><img src="images/dockers/tools/photoprism.svg" alt=""><span>PhotoPrism</span></div>
+              <div class="service-tile"><img src="images/dockers/tools/syncthing.svg" alt=""><span>Syncthing</span></div>
+              <div class="service-tile"><img src="images/dockers/tools/stirling-pdf.svg" alt=""><span>Stirling PDF</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="group-heading"><h2>Monitoring & controls</h2></div>
+      <div class="widget-row">
+        <section class="section qbit-widget-section" aria-labelledby="qbit-heading">
+          <div class="section-heading"><h2 id="qbit-heading">QBit Stats</h2></div>
+          <div id="qbittorrent-stats" aria-live="polite"></div>
+        </section>
+        <section class="section light-widget-section" aria-labelledby="light-heading">
+          <div class="section-heading"><h2 id="light-heading">Light Control</h2></div>
+          <div class="ha-light-widget" id="bedroom-light">
+            <div class="light-header"><div><div class="ha-light-label" id="bedroom-light-label">Bedroom light</div></div><div id="light-indicator" class="light-indicator" aria-hidden="true"></div></div>
+            <div class="ha-light-brightness">
+              <label for="bedroom-brightness-slider">Brightness</label>
+              <input type="range" min="0" max="255" value="128" id="bedroom-brightness-slider">
+              <form id="bedroom-brightness-form" class="ha-brightness-value">
+                <input type="number" id="bedroom-brightness-percent" min="0" max="100" step="1" value="50" aria-label="Bedroom light brightness percentage">
+                <span>%</span><button class="ha-brightness-apply" type="submit">Apply</button>
+              </form>
+            </div>
+            <button id="bedroom-toggle" class="ha-toggle" type="button" aria-label="Toggle bedroom light in the offline preview" aria-pressed="true">⏻ <span>Turn off</span></button>
+            
+          </div>
+        </section>
+      </div>
+
+      <div class="lower-grid">
+        <section class="section" aria-labelledby="playing-heading"><div class="section-heading"><h2 id="playing-heading">Plex Now Playing</h2></div><div id="now-playing" aria-live="polite"></div></section>
+        <section class="section" aria-labelledby="releases-heading"><div class="section-heading"><h2 id="releases-heading">🎬 Live Feed</h2></div><div id="cinema-feed"></div><div id="games-feed"></div></section>
+      </div>
+
+      <section class="section sports-section" aria-labelledby="sports-heading"><div class="section-heading"><h2 id="sports-heading">🏆 European Sports Feed</h2></div><div id="sports-feed"></div></section>
+    </main>
+    <footer class="footer"><span>My Dashboard · Offline preview (sample widget data)</span><span>HTML · CSS · JavaScript</span></footer>
+  </div>
+  <script src="dashboard.config.js" defer></script>
+  <script src="demo.js" defer></script>
+  <script src="dashboard.js" defer></script>
+  <script src="sports.js" defer></script>
+</body>
+</html>
